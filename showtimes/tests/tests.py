@@ -1,7 +1,7 @@
 import pytest
 
 from showtimes.models import Cinema
-from showtimes.tests.utils import fake_cinema_data
+from showtimes.tests.utils import fake_cinema_data, random_movies
 
 
 @pytest.mark.django_db
@@ -49,8 +49,8 @@ def test_update_cinema(client, set_up):
     response = client.get(f"/cinemas/{cinema.id}/", {}, format='json')
     cinema_data = response.data
     new_name = 'Helios'
-    new_city = 'Żywiec'
     cinema_data["name"] = new_name
+    new_city = 'Żywiec'
     cinema_data["city"] = new_city
     response = client.patch(f"/cinemas/{cinema.id}/", cinema_data, format='json')
     assert response.status_code == 200
