@@ -6,7 +6,7 @@ from rest_framework.test import APIClient
 
 from movielist.models import Person
 from movielist.tests.utils import faker, create_fake_movie
-from showtimes.tests.utils import create_fake_cinema
+from showtimes.tests.utils import create_fake_cinema, add_screenings
 
 sys.path.append(os.path.dirname(__file__))
 
@@ -25,3 +25,4 @@ def set_up():
         create_fake_movie()
     for _ in range(3):
         create_fake_cinema()
+

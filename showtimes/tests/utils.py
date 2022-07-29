@@ -32,3 +32,11 @@ def fake_cinema_data():
 def create_fake_cinema():
     cinema = Cinema.objects.create(**fake_cinema_data())
     add_screenings(cinema)
+
+
+def create_fake_screening():
+    return {
+        "cinema": Cinema.objects.first().name,
+        "movie": Movie.objects.first().title,
+        "date": faker.date_time_between().isoformat() + 'Z'
+    }
